@@ -60,11 +60,12 @@ const relatorioController = {
 
   salvaPDF: async (req, res) => {
     const htmlContent = req.body;
+    console.log(htmlContent);
 
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
-      await page.setContent(htmlContent, { waitUntil: "networkidle0" });
+      await page.setContent(htmlContent);
 
       const pdfBuffer = await page.pdf({
         format: "A4",
@@ -73,6 +74,7 @@ const relatorioController = {
 
       await browser.close();
       fs.writeFileSync("relatorio.pdf", pdfBuffer);
+      console.log("arquivo gerado");
 
       res.set({
         "Content-Type": "application/pdf",
