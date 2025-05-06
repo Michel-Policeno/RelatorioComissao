@@ -1,6 +1,7 @@
 const xlsx = require("xlsx");
 const fs = require("fs");
 const path = require("path");
+const puppeteer = require("puppeteer");
 
 const relatorioController = {
   // GET /
@@ -33,8 +34,9 @@ const relatorioController = {
         mensagem: `Formato do arquivo inválido! Extensões permitidas: .xlsx .xls .xlsm`,
       });
     }
-    //leitura do arquivo - bibliotexa xlsx
+
     try {
+      //leitura do arquivo - bibliotexa xlsx
       const workbook = xlsx.readFile(caminhoArquivoXLSX);
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
@@ -53,6 +55,36 @@ const relatorioController = {
       });
     } finally {
       fs.unlinkSync(caminhoArquivoXLSX);
+    }
+  },
+
+  salvaPDF: async (req, res) => {
+    const htmlContent = req.body;
+    console.log(htmlContent);
+
+    try {
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      await page.setContent(htmlContent);
+
+      const pdfBuffer = await page.pdf({
+        format: "A4",
+        printBackground: true,
+      });
+
+      await browser.close();
+      fs.writeFileSync("relatorio.pdf", pdfBuffer);
+      console.log("arquivo gerado");
+
+      res.set({
+        "Content-Type": "application/pdf",
+        "Content-Disposition": "attachment; filename=relatorio.pdf",
+      });
+
+      return res.status(201).send(pdfBuffer);
+    } catch (error) {
+      console.log("Erro ao gerar PDF:", error);
+      res.status(500).send("Erro ao gerar PDF");
     }
   },
 };

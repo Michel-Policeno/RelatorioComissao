@@ -6,5 +6,6 @@ const relatorioController = require("../controller/relatorio.controller.js");
 
 router.get("/", relatorioController.validaConexao);
 router.post("/upload", upload.single("file"), relatorioController.uploadFile);
+router.post("/salvaPDF", relatorioController.salvaPDF);
 
 module.exports = router;
