@@ -1,65 +1,59 @@
-.background-image {
-  width: 794px;
-  height: 1122px;
-  object-fit: cover;
-  filter: brightness(0.6);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.report-date {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: #000;
-  margin-top: 4px;
-}
+/* ------------------- BASE GLOBAL ------------------- */
 body {
-  font-family: Segoe UI, sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f3f4f6d7;
   margin: 0;
   padding: 0;
 }
+
 .navbar {
   background-color: #173e74;
-  color: #fff;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
 }
+
 .logo {
   height: 50px;
 }
+
 .user-box {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
 .container {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .card {
   background-color: #fff;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 0 8px #0000001a;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
+
 .subcard {
   margin-bottom: 0.75rem;
 }
+
 button {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 8px;
   background-color: #2563eb;
-  color: #fff;
-  font-weight: 700;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
 }
+
+/* ------------------- COVER REPORT ------------------- */
 .cover {
   width: 794px;
   height: 1122px;
@@ -76,6 +70,7 @@ button {
   page-break-after: always;
   overflow: hidden;
 }
+
 .background-image {
   position: absolute;
   width: 794px;
@@ -86,23 +81,27 @@ button {
   left: 0;
   z-index: 1;
 }
+
 .overlay-content {
   text-align: center;
   z-index: 2;
   width: 100%;
   margin-bottom: 2rem;
 }
+
 .overlay-logo {
-  height: 70px;
+  height: 80px;
   margin-bottom: 8rem;
 }
+
 .overlay-title {
   font-size: 2.6rem;
-  font-weight: 700;
+  font-weight: bold;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
   margin-bottom: 2rem;
-  color: #fff;
+  color: white;
 }
+
 .cards-wrapper {
   z-index: 1;
   display: flex;
@@ -111,34 +110,44 @@ button {
   gap: 2rem;
   width: 100%;
 }
+
 .glass-card {
-  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  background: #a5a4a480;
+  background: rgba(165, 164, 164, 0.5);
   border-radius: 16px;
   padding: 1.5rem;
   width: 300px;
   max-width: 90%;
-  color: #fff;
-  box-shadow: 0 4px 20px #0006;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
+
 .glass-card h3 {
   margin-top: 0;
   font-size: 18px;
-  color: #fff;
+  color: white;
 }
+
 .report-date {
   margin-top: 2rem;
   font-size: 0.85rem;
   z-index: 2;
-  color: #fff;
+  color: white;
   font-style: italic;
 }
+
+/* ------------------- DETAILED REPORT ------------------- */
 .detailed-report {
   padding: 2rem;
   background-color: #f9fafb;
   min-height: 100vh;
 }
+
+.detailed-report .report-date {
+  color: black;
+  font-size: 1rem;
+}
+
 .report-header {
   display: flex;
   align-items: center;
@@ -146,52 +155,64 @@ button {
   margin-bottom: 2rem;
   padding: 0 1rem;
 }
+
 .report-header img.overlay-logo {
-  height: 70px;
-  object-fit: contain;
+  height: 100px;
+  margin-right: 1rem;
+  margin-top: 2%;
 }
+
 .report-header div {
   text-align: right;
 }
+
 .report-header h3 {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: bold;
 }
+
 .report-date.black {
   font-size: 0.85rem;
   font-style: italic;
-  color: #000;
+  color: black;
   margin-top: 4px;
 }
+
 .report-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #a6a8aa;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 12px #0000000d;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
+
 .report-table th,
 .report-table td {
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
 }
+
 .report-table th {
   background-color: #173e74;
-  color: #fff;
+  color: white;
   font-weight: 600;
 }
+
 .report-table td {
-  color: #000;
+  color: black;
 }
+
+/* ------------------- EXPORT BUTTON ------------------- */
 .export-wrapper {
   display: flex;
   justify-content: center;
   margin: 43px auto;
   width: 100%;
 }
+
 .export-wrapper button {
   padding: 15px 24px;
   background-color: #007bff;
@@ -202,9 +223,11 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .export-wrapper button:hover {
   background-color: #0056b3;
 }
+
 .spinner {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #007bff;
@@ -214,12 +237,4 @@ button {
   animation: spin 1s linear infinite;
   display: inline-block;
   vertical-align: middle;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
